@@ -10,6 +10,12 @@ netmask {{ item.netmask }}
 {% if item.gateway is defined %}
 gateway {{ item.gateway }}
 {% endif %}
+{% if item.dns_nameservers is defined %}
+dns-nameservers {{ item.dns_nameservers|join(' ') }}
+{% endif %}
+{% if item.dns_search is defined %}
+dns-search {{ item.dns_search|join(' ') }}
+{% endif %}
 {% endif %}
 
 {% if item.bootproto == 'dhcp' %}
