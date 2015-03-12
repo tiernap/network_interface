@@ -16,6 +16,12 @@ bridge_ports {{ item.ports|join(' ') }}
 {% if item.stp is defined %}        
 bridge_stp {{ item.stp }}
 {% endif %}
+{% if item.dns_nameservers is defined %}
+dns-nameservers {{ item.dns_nameservers|join(' ') }}
+{% endif %}
+{% if item.dns_search is defined %}
+dns-search {{ item.dns_search|join(' ') }}
+{% endif %}
 {% endif %}
 
 {% if item.bootproto == 'dhcp' %}
